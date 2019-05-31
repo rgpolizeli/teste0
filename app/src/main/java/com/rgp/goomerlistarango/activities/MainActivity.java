@@ -1,9 +1,11 @@
-package com.rgp.goomerlistarango;
+package com.rgp.goomerlistarango.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+
+import com.rgp.goomerlistarango.R;
 
 public class MainActivity extends AppCompatActivity {
 
