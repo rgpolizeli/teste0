@@ -3,6 +3,7 @@ package com.rgp.goomerlistarango.activities;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -37,6 +38,12 @@ public class MainActivity extends AppCompatActivity {
         //add this to fix landscape orientation
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         setContentView(R.layout.activity_main);
+
+        //remove title from SupportActionBar
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayShowTitleEnabled(false);
+        }
 
         this.restaurantsViewModel = ViewModelProviders.of(this).get(RestaurantsViewModel.class);
 

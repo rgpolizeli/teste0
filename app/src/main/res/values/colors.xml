@@ -10,4 +10,5 @@
     <color name="onRestaurantFontColor">#FFFFFF</color>
     <color name="offRestaurantFontColor">#FFFFFF</color>
     <color name="transparentColor">#00000000</color>
+    <color name="welcomeColor">#404040</color>
 </resources>
