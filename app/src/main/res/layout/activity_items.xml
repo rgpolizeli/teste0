@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/itemsConstraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/offRestaurantFontColor"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/restaurantImageView"
+        android:layout_width="145px"
+        android:layout_height="145px"
+        android:layout_marginStart="75px"
+        android:layout_marginTop="51px"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/restaurantNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21px"
+        android:layout_marginTop="62px"
+        android:fontFamily="@font/montserrat"
+        android:text="Nome do Restaurante"
+        android:textAlignment="viewStart"
+        android:textColor="@color/welcomeColor"
+        android:textSize="24px"
+        app:layout_constraintStart_toEndOf="@+id/restaurantImageView"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <TextView
+        android:id="@+id/restaurantAddressTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21px"
+        android:layout_marginTop="4px"
+        android:fontFamily="@font/montserrat"
+        android:text="Endereço do Restaurante"
+        android:textAlignment="viewStart"
+        android:textSize="16px"
+        app:layout_constraintStart_toEndOf="@+id/restaurantImageView"
+        app:layout_constraintTop_toBottomOf="@+id/restaurantNameTextView" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/dinnerGroupHeaderConstraintLayout"
+        android:layout_width="840px"
+        android:layout_height="42px"
+        android:layout_marginStart="75px"
+        android:layout_marginTop="127px"
+        android:background="@drawable/menu_group_drawable"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/restaurantImageView">
+
+        <TextView
+            android:id="@+id/dinnerTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13px"
+            android:layout_marginTop="11.5px"
+            android:fontFamily="@font/montserrat"
+            android:text="Almoço"
+            android:textColor="@color/welcomeColor"
+            android:textSize="16px"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/dinnerGroupExpandableImageView"
+            android:layout_width="9.71px"
+            android:layout_height="16px"
+            android:layout_marginTop="13.49px"
+            android:layout_marginEnd="37px"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_expandable" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/dinnerRecyclerView"
+        android:layout_width="840px"
+        android:layout_height="275px"
+        android:layout_marginStart="75px"
+        android:layout_marginTop="10px"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dinnerGroupHeaderConstraintLayout" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/drinkGroupHeaderConstraintLayout"
+        android:layout_width="840px"
+        android:layout_height="42px"
+        android:layout_marginStart="75px"
+        android:layout_marginTop="10px"
+        android:background="@drawable/menu_group_drawable"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dinnerRecyclerView">
+
+        <TextView
+            android:id="@+id/drinkTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13px"
+            android:layout_marginTop="11.5px"
+            android:fontFamily="@font/montserrat"
+            android:text="Bebidas"
+            android:textColor="@color/welcomeColor"
+            android:textSize="16px"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/drinkGroupExpandableImageView"
+            android:layout_width="9.71px"
+            android:layout_height="16px"
+            android:layout_marginTop="13.49px"
+            android:layout_marginEnd="37px"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_expandable" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/drinkRecyclerView"
+        android:layout_width="840px"
+        android:layout_height="275px"
+        android:layout_marginStart="75px"
+        android:layout_marginTop="10px"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/drinkGroupHeaderConstraintLayout" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/dessertGroupHeaderConstraintLayout"
+        android:layout_width="840px"
+        android:layout_height="42px"
+        android:layout_marginStart="75px"
+        android:layout_marginTop="10px"
+        android:background="@drawable/menu_group_drawable"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/drinkRecyclerView">
+
+        <TextView
+            android:id="@+id/dessertTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13px"
+            android:layout_marginTop="11.5px"
+            android:fontFamily="@font/montserrat"
+            android:text="Sobremesas"
+            android:textColor="@color/welcomeColor"
+            android:textSize="16px"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/dessertGroupExpandableImageView"
+            android:layout_width="9.71px"
+            android:layout_height="16px"
+            android:layout_marginTop="13.49px"
+            android:layout_marginEnd="37px"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_expandable" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/dessertRecyclerView"
+        android:layout_width="840px"
+        android:layout_height="275px"
+        android:layout_marginStart="75px"
+        android:layout_marginTop="10px"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dessertGroupHeaderConstraintLayout" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/accompanimentsGroupHeaderConstraintLayout"
+        android:layout_width="840px"
+        android:layout_height="42px"
+        android:layout_marginStart="75px"
+        android:layout_marginTop="10px"
+        android:background="@drawable/menu_group_drawable"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dessertRecyclerView">
+
+        <TextView
+            android:id="@+id/accompanimentsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13px"
+            android:layout_marginTop="11.5px"
+            android:fontFamily="@font/montserrat"
+            android:text="Acompanhamentos"
+            android:textColor="@color/welcomeColor"
+            android:textSize="16px"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/accompanimentsGroupExpandableImageView"
+            android:layout_width="9.71px"
+            android:layout_height="16px"
+            android:layout_marginTop="13.49px"
+            android:layout_marginEnd="37px"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_expandable" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/accompanimentsRecyclerView"
+        android:layout_width="840px"
+        android:layout_height="275px"
+        android:layout_marginStart="75px"
+        android:layout_marginTop="10px"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accompanimentsGroupHeaderConstraintLayout" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="260px"
+        android:layout_height="484px"
+        android:layout_marginStart="30px"
+        android:layout_marginTop="228px"
+        app:layout_constraintStart_toEndOf="@+id/dinnerGroupHeaderConstraintLayout"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:srcCompat="@color/rectangleColor" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

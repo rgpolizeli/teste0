@@ -1,5 +1,6 @@
 package com.rgp.goomerlistarango.activities;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 position = restaurantsRecyclerView.getChildAdapterPosition(view);
             }
             Restaurant clickedRestaurant = restaurantsRVAdapter.getItem(position);
-            //startItemsActivity(clickedRestaurant.getId());
+            startItemsActivity();
         });
 
         //create observables
@@ -70,6 +71,11 @@ public class MainActivity extends AppCompatActivity {
         //create observers
         this.restaurantsObserver = new RestaurantsObserver(this.restaurantsRVAdapter);
 
+    }
+
+    private void startItemsActivity() {
+        Intent intent = new Intent(this, ItemsActivity.class);
+        startActivity(intent);
     }
 
     @Override
