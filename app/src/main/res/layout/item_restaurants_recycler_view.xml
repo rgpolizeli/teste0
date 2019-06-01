@@ -3,59 +3,78 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/itemRestaurantsRecyclerViewConstraintLayout"
-    android:layout_width="368dp"
-    android:layout_height="118dp"
-    android:background="@drawable/item_restaurants_recycler_view_v2"
+    android:layout_width="368px"
+    android:layout_height="118px"
+    android:layout_margin="9px"
+    android:background="@drawable/item_restaurants_recycler_view"
     android:orientation="horizontal">
-
-    <ImageView
-        android:id="@+id/restaurantImageView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="18dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/restaurantNameTextView"
-        android:layout_width="179dp"
-        android:layout_height="19dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="50dp"
-        android:fontFamily="@font/montserrat"
-        android:text="Nome do Restaurante"
-        android:textAlignment="viewStart"
-        android:textColor="@color/restaurantNameColor"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/restaurantImageView"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/restaurantAddressTextView"
-        android:layout_width="149dp"
-        android:layout_height="15dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="2dp"
-        android:fontFamily="@font/montserrat"
-        android:text="Endereço do restaurante"
-        android:textAlignment="viewStart"
-        android:textColor="@color/restaurantNameColor"
-        android:textSize="10sp"
-        app:layout_constraintStart_toEndOf="@+id/restaurantImageView"
-        app:layout_constraintTop_toBottomOf="@+id/restaurantNameTextView" />
 
     <TextView
         android:id="@+id/restaurantStateTextView"
-        android:layout_width="28dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="336dp"
-        android:layout_marginTop="7dp"
+        android:layout_width="48px"
+        android:layout_height="48px"
+        android:layout_marginStart="320px"
+        android:background="@drawable/on_off_restaurant_drawable"
         android:fontFamily="@font/montserrat"
+        android:gravity="center"
         android:text="Aberto agora"
         android:textAlignment="center"
         android:textColor="@color/onRestaurantFontColor"
-        android:textSize="8sp"
+        android:textSize="8px"
+        android:translationZ="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="18px"
+        android:layout_marginEnd="18px"
+        android:layout_marginBottom="2dp"
+        android:background="@drawable/item_restaurants_recycler_view_constraint_layout"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/restaurantImageView"
+            android:layout_width="100px"
+            android:layout_height="100px"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/restaurantNameTextView"
+            android:layout_width="179px"
+            android:layout_height="19px"
+            android:layout_marginStart="16px"
+            android:layout_marginTop="32px"
+            android:fontFamily="@font/montserrat"
+            android:text="Nome do Restaurante"
+            android:textAlignment="viewStart"
+            android:textColor="@color/restaurantNameColor"
+            android:textSize="16px"
+            app:layout_constraintStart_toEndOf="@+id/restaurantImageView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/restaurantAddressTextView"
+            android:layout_width="149px"
+            android:layout_height="15px"
+            android:layout_marginStart="16px"
+            android:layout_marginTop="2px"
+            android:fontFamily="@font/montserrat"
+            android:text="Endereço do restaurante"
+            android:textAlignment="viewStart"
+            android:textColor="@color/restaurantNameColor"
+            android:textSize="10px"
+            app:layout_constraintStart_toEndOf="@+id/restaurantImageView"
+            app:layout_constraintTop_toBottomOf="@+id/restaurantNameTextView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,6 +10,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.rgp.goomerlistarango.R;
 import com.rgp.goomerlistarango.interfaces.I_RestaurantsRVAdapter;
 import com.rgp.goomerlistarango.listeners.OnItemClickListener;
@@ -46,7 +49,11 @@ public class RestaurantsRVAdapter extends RecyclerView.Adapter<RestaurantsRVAdap
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String imageUri = this.restaurants.get(position).getImage();
-        Glide.with(holder.itemView.getContext()).load(imageUri).into(holder.restaurantImageView);
+        Glide
+                .with(holder.itemView.getContext())
+                .load(imageUri)
+                .apply(new RequestOptions().transform(new CenterCrop(), new RoundedCorners(4)))
+                .into(holder.restaurantImageView);
         holder.restaurantNameTextView.setText(this.restaurants.get(position).getName());
         holder.restaurantAddressTextView.setText(this.restaurants.get(position).getAddress());
     }
