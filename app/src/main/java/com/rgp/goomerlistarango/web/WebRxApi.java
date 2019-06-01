@@ -14,8 +14,8 @@ import retrofit2.http.Path;
 public interface WebRxApi {
 
     @GET("restaurants/")
-    Observable<Restaurant[]> restaurantsArray();
+    Observable<Restaurant[]> getAllRestaurants();
 
     @GET("restaurants/{id}/menu")
-    Observable<Item[]> itemsArray(@Path("id") int restaurantId);
+    Observable<Item[]> getItemsByRestaurantId(@Path("id") int restaurantId);
 }
