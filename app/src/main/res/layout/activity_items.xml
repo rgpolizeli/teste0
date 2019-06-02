@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/restaurant_image_data_separator"
-        android:layout_marginTop="48px"
+        android:layout_marginTop="51px"
         android:fontFamily="@font/montserrat"
         android:text="Nome do Restaurante"
         android:textAlignment="viewStart"
@@ -61,11 +61,12 @@
         android:layout_width="840px"
         android:layout_height="42px"
         android:layout_marginStart="75px"
-        android:layout_marginTop="127px"
+        android:layout_marginTop="43px"
         android:background="@drawable/menu_group_drawable"
-        android:onClick="groupHeaderOnClick"
+        android:onClick="dinnerGroupHeaderOnClick"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/restaurantImageView">
+        app:layout_constraintTop_toBottomOf="@+id/itemsSearchConstraintLayout">
 
         <TextView
             android:id="@+id/dinnerTextView"
@@ -108,6 +109,8 @@
         android:layout_marginStart="75px"
         android:layout_marginTop="10px"
         android:background="@drawable/menu_group_drawable"
+        android:onClick="drinkGroupHeaderOnClick"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dinnerRecyclerView">
 
@@ -152,6 +155,8 @@
         android:layout_marginStart="75px"
         android:layout_marginTop="10px"
         android:background="@drawable/menu_group_drawable"
+        android:onClick="dessertGroupHeaderOnClick"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/drinkRecyclerView">
 
@@ -196,6 +201,8 @@
         android:layout_marginStart="75px"
         android:layout_marginTop="10px"
         android:background="@drawable/menu_group_drawable"
+        android:onClick="accompanimentsGroupHeaderOnClick"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dessertRecyclerView">
 
@@ -239,7 +246,9 @@
         android:layout_height="484px"
         android:layout_marginStart="30px"
         android:layout_marginTop="228px"
-        app:layout_constraintStart_toEndOf="@+id/dinnerGroupHeaderConstraintLayout"
+        android:layout_marginBottom="196px"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/itemsSearchConstraintLayout"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:srcCompat="@color/rectangleColor" />
 
@@ -419,5 +428,30 @@
         android:textSize="12px"
         app:layout_constraintStart_toEndOf="@+id/saturdayTextView"
         app:layout_constraintTop_toBottomOf="@+id/hourFridayTextView" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/itemsSearchConstraintLayout"
+        android:layout_width="840px"
+        android:layout_height="40px"
+        android:layout_marginStart="75px"
+        android:layout_marginTop="55px"
+        android:background="@drawable/search_drawable"
+        android:elevation="2dp"
+        android:textAlignment="viewStart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/restaurantImageView">
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="16px"
+            android:layout_height="16px"
+            android:layout_marginTop="12px"
+            android:layout_marginEnd="25px"
+            android:layout_marginBottom="12px"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_search" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

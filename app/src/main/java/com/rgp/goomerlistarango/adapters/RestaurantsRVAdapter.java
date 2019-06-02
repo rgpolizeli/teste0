@@ -14,13 +14,13 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.rgp.goomerlistarango.R;
-import com.rgp.goomerlistarango.interfaces.I_RestaurantsRVAdapter;
+import com.rgp.goomerlistarango.interfaces.I_RestaurantsRecyclerViewAdapter;
 import com.rgp.goomerlistarango.listeners.OnItemClickListener;
 import com.rgp.goomerlistarango.models.Restaurant;
 
 import java.util.List;
 
-public class RestaurantsRVAdapter extends RecyclerView.Adapter<RestaurantsRVAdapter.ViewHolder> implements I_RestaurantsRVAdapter {
+public class RestaurantsRVAdapter extends RecyclerView.Adapter<RestaurantsRVAdapter.ViewHolder> implements I_RestaurantsRecyclerViewAdapter {
     private @NonNull
     final OnItemClickListener onClickListItemListener;
     private @NonNull

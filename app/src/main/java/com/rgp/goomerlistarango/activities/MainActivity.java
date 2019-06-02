@@ -39,18 +39,39 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         //add this to fix landscape orientation
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        setContentView(R.layout.activity_main);
 
-        //remove title from SupportActionBar
+        setContentView(R.layout.activity_main);
+        removeTitleFromActionBar();
+
+        this.restaurantsViewModel = ViewModelProviders.of(this).get(RestaurantsViewModel.class);
+
+        setupRestaurantsRecyclerView();
+
+        //create observables
+        restaurantsObservable = this.restaurantsViewModel.getAllRestaurants();
+
+        //create observers
+        this.restaurantsObserver = new RestaurantsObserver(this.restaurantsRVAdapter);
+
+    }
+
+    /**
+     * Remove title from SupportActionBar
+     */
+    private void removeTitleFromActionBar() {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayShowTitleEnabled(false);
         }
+    }
 
-        this.restaurantsViewModel = ViewModelProviders.of(this).get(RestaurantsViewModel.class);
-
+    /**
+     * Configure Restaurants Recycler View and set its onItemClickListener.
+     */
+    private void setupRestaurantsRecyclerView() {
         restaurantsRecyclerView = this.findViewById(R.id.restaurantsRecyclerView);
         int numberOfColumns = 3;
         RecyclerView.LayoutManager restaurantsRecyclerViewLayoutManager = new GridLayoutManager(this, numberOfColumns);
@@ -67,15 +88,13 @@ public class MainActivity extends AppCompatActivity {
             Restaurant clickedRestaurant = restaurantsRVAdapter.getItem(position);
             startItemsActivity(clickedRestaurant);
         });
-
-        //create observables
-        restaurantsObservable = this.restaurantsViewModel.getAllRestaurants();
-
-        //create observers
-        this.restaurantsObserver = new RestaurantsObserver(this.restaurantsRVAdapter);
-
     }
 
+    /**
+     * Get clicked restaurant and create an intent to ItemsActivity, passing its content serialized.
+     *
+     * @param targetRestaurant clicked restaurant.
+     */
     private void startItemsActivity(Restaurant targetRestaurant) {
         Intent intent = new Intent(this, ItemsActivity.class);
 

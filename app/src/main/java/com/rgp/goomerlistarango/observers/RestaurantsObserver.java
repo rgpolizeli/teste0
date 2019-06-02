@@ -1,6 +1,6 @@
 package com.rgp.goomerlistarango.observers;
 
-import com.rgp.goomerlistarango.interfaces.I_RestaurantsRVAdapter;
+import com.rgp.goomerlistarango.interfaces.I_RestaurantsRecyclerViewAdapter;
 import com.rgp.goomerlistarango.models.Restaurant;
 
 import java.util.ArrayList;
@@ -11,9 +11,9 @@ import io.reactivex.observers.DisposableObserver;
 
 public class RestaurantsObserver extends DisposableObserver<Restaurant[]> {
 
-    private I_RestaurantsRVAdapter restaurantsRVAdapter;
+    private I_RestaurantsRecyclerViewAdapter restaurantsRVAdapter;
 
-    public RestaurantsObserver(I_RestaurantsRVAdapter restaurantsRVAdapter) {
+    public RestaurantsObserver(I_RestaurantsRecyclerViewAdapter restaurantsRVAdapter) {
         this.restaurantsRVAdapter = restaurantsRVAdapter;
     }
 

@@ -5,6 +5,7 @@
     android:id="@+id/itemConstraintLayout"
     android:layout_width="405px"
     android:layout_height="115px"
+    android:layout_margin="10px"
     android:background="@drawable/item_items_recycler_view"
     android:elevation="2dp"
     android:orientation="horizontal">
@@ -52,6 +53,7 @@
         android:text="R$ 19,90"
         android:textColor="@color/normalPriceColor"
         android:textSize="12px"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/currentItemPriceTextView"
         app:layout_constraintStart_toEndOf="@+id/currentItemPriceTextView" />
 
@@ -70,6 +72,7 @@
         android:text="Promo Almoço"
         android:textColor="@color/offRestaurantFontColor"
         android:textSize="8px"
+        android:visibility="gone"
         app:layout_constraintStart_toEndOf="@+id/itemNameTextView"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

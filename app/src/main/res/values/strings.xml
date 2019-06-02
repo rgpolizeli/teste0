@@ -10,4 +10,5 @@
     <string name="wednesday_label">Quarta:</string>
     <string name="tuesday_label">Terça:</string>
     <string name="monday_label">Segunda:</string>
+    <string name="price_unit">R$</string>
 </resources>
