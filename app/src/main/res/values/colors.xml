@@ -15,4 +15,7 @@
     <color name="saleColor">#2B0D61</color>
     <color name="currentPriceColor">#009CA3</color>
     <color name="normalPriceColor">#989898</color>
+    <color name="itemRecyclerViewFirstColor">#404040</color>
+    <color name="itemRecyclerViewSecondColor">#989898</color>
+    <color name="itemRecyclerViewThirdColor">#FFA2A2A2</color>
 </resources>

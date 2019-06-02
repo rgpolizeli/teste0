@@ -1,3 +1,5 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="weekday_space_separator">30dp</dimen>
+    <dimen name="restaurant_image_data_separator">15dp</dimen>
 </resources>

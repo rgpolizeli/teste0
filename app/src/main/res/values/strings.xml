@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">Goomer Lista Rango</string>
     <string name="title_activity_items">ItemsActivity</string>
+    <string name="hour_separator">às</string>
+    <string name="empty_hour">-</string>
+    <string name="saturday_label">Sábado:</string>
+    <string name="friday_label">Sexta:</string>
+    <string name="thursday_label">Quinta:</string>
+    <string name="sunday_label">Domingo:</string>
+    <string name="wednesday_label">Quarta:</string>
+    <string name="tuesday_label">Terça:</string>
+    <string name="monday_label">Segunda:</string>
 </resources>

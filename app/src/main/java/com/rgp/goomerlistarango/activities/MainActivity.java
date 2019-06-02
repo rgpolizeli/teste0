@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
 import com.rgp.goomerlistarango.R;
 import com.rgp.goomerlistarango.adapters.RestaurantsRVAdapter;
 import com.rgp.goomerlistarango.listeners.OnItemClickListener;
@@ -28,10 +29,12 @@ public class MainActivity extends AppCompatActivity {
     private RestaurantsViewModel restaurantsViewModel;
     private RecyclerView restaurantsRecyclerView;
     private RestaurantsRVAdapter restaurantsRVAdapter;
+    public static final String RESTAURANT_JSON = "RESTAURANT_JSON";
 
     private Observable<Restaurant[]> restaurantsObservable;
 
     private RestaurantsObserver restaurantsObserver;
+    private final Gson gson = new Gson();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 position = restaurantsRecyclerView.getChildAdapterPosition(view);
             }
             Restaurant clickedRestaurant = restaurantsRVAdapter.getItem(position);
-            startItemsActivity();
+            startItemsActivity(clickedRestaurant);
         });
 
         //create observables
@@ -73,8 +76,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void startItemsActivity() {
+    private void startItemsActivity(Restaurant targetRestaurant) {
         Intent intent = new Intent(this, ItemsActivity.class);
+
+        String restaurantJson = gson.toJson(targetRestaurant);
+        intent.putExtra(MainActivity.RESTAURANT_JSON, restaurantJson);
         startActivity(intent);
     }
 

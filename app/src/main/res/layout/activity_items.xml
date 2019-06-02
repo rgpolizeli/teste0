@@ -32,8 +32,8 @@
         android:id="@+id/restaurantNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="21px"
-        android:layout_marginTop="62px"
+        android:layout_marginStart="@dimen/restaurant_image_data_separator"
+        android:layout_marginTop="48px"
         android:fontFamily="@font/montserrat"
         android:text="Nome do Restaurante"
         android:textAlignment="viewStart"
@@ -46,11 +46,12 @@
         android:id="@+id/restaurantAddressTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="21px"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="4px"
         android:fontFamily="@font/montserrat"
         android:text="Endereço do Restaurante"
         android:textAlignment="viewStart"
+        android:textColor="@color/itemRecyclerViewSecondColor"
         android:textSize="16px"
         app:layout_constraintStart_toEndOf="@+id/restaurantImageView"
         app:layout_constraintTop_toBottomOf="@+id/restaurantNameTextView" />
@@ -62,6 +63,7 @@
         android:layout_marginStart="75px"
         android:layout_marginTop="127px"
         android:background="@drawable/menu_group_drawable"
+        android:onClick="groupHeaderOnClick"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/restaurantImageView">
 
@@ -240,5 +242,182 @@
         app:layout_constraintStart_toEndOf="@+id/dinnerGroupHeaderConstraintLayout"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:srcCompat="@color/rectangleColor" />
+
+    <TextView
+        android:id="@+id/mondayTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/monday_label"
+        android:textColor="@color/itemRecyclerViewThirdColor"
+        android:textSize="12px"
+        app:layout_constraintStart_toStartOf="@+id/sundayTextView"
+        app:layout_constraintTop_toBottomOf="@+id/sundayTextView" />
+
+    <TextView
+        android:id="@+id/tuesdayTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/tuesday_label"
+        android:textColor="@color/itemRecyclerViewThirdColor"
+        android:textSize="12px"
+        app:layout_constraintStart_toStartOf="@+id/sundayTextView"
+        app:layout_constraintTop_toBottomOf="@+id/mondayTextView" />
+
+    <TextView
+        android:id="@+id/wednesdayTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/wednesday_label"
+        android:textColor="@color/itemRecyclerViewThirdColor"
+        android:textSize="12px"
+        app:layout_constraintStart_toStartOf="@+id/sundayTextView"
+        app:layout_constraintTop_toBottomOf="@+id/tuesdayTextView" />
+
+    <TextView
+        android:id="@+id/sundayTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/sunday_label"
+        android:textColor="@color/itemRecyclerViewThirdColor"
+        android:textSize="12px"
+        app:layout_constraintStart_toEndOf="@+id/restaurantImageView"
+        app:layout_constraintTop_toBottomOf="@+id/restaurantAddressTextView" />
+
+    <TextView
+        android:id="@+id/thursdayTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/weekday_space_separator"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/thursday_label"
+        android:textColor="@color/itemRecyclerViewThirdColor"
+        android:textSize="12px"
+        app:layout_constraintStart_toEndOf="@+id/hourSundayTextView"
+        app:layout_constraintTop_toBottomOf="@+id/restaurantAddressTextView" />
+
+    <TextView
+        android:id="@+id/fridayTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/friday_label"
+        android:textColor="@color/itemRecyclerViewThirdColor"
+        android:textSize="12px"
+        app:layout_constraintStart_toStartOf="@+id/thursdayTextView"
+        app:layout_constraintTop_toBottomOf="@+id/thursdayTextView" />
+
+    <TextView
+        android:id="@+id/saturdayTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/saturday_label"
+        android:textColor="@color/itemRecyclerViewThirdColor"
+        android:textSize="12px"
+        app:layout_constraintStart_toStartOf="@+id/thursdayTextView"
+        app:layout_constraintTop_toBottomOf="@+id/fridayTextView" />
+
+    <TextView
+        android:id="@+id/hourMondayTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/empty_hour"
+        android:textColor="@color/itemRecyclerViewFirstColor"
+        android:textSize="12px"
+        app:layout_constraintStart_toEndOf="@+id/mondayTextView"
+        app:layout_constraintTop_toBottomOf="@+id/sundayTextView" />
+
+    <TextView
+        android:id="@+id/hourWednesdayTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/empty_hour"
+        android:textColor="@color/itemRecyclerViewFirstColor"
+        android:textSize="12px"
+        app:layout_constraintStart_toEndOf="@+id/wednesdayTextView"
+        app:layout_constraintTop_toBottomOf="@+id/tuesdayTextView" />
+
+    <TextView
+        android:id="@+id/hourTuesdayTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/empty_hour"
+        android:textColor="@color/itemRecyclerViewFirstColor"
+        android:textSize="12px"
+        app:layout_constraintStart_toEndOf="@+id/tuesdayTextView"
+        app:layout_constraintTop_toBottomOf="@+id/mondayTextView" />
+
+    <TextView
+        android:id="@+id/hourSundayTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/empty_hour"
+        android:textColor="@color/itemRecyclerViewFirstColor"
+        android:textSize="12px"
+        app:layout_constraintStart_toEndOf="@+id/sundayTextView"
+        app:layout_constraintTop_toBottomOf="@+id/restaurantAddressTextView" />
+
+    <TextView
+        android:id="@+id/hourThursdayTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/empty_hour"
+        android:textColor="@color/itemRecyclerViewFirstColor"
+        android:textSize="12px"
+        app:layout_constraintStart_toEndOf="@+id/thursdayTextView"
+        app:layout_constraintTop_toBottomOf="@+id/restaurantAddressTextView" />
+
+    <TextView
+        android:id="@+id/hourFridayTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/empty_hour"
+        android:textColor="@color/itemRecyclerViewFirstColor"
+        android:textSize="12px"
+        app:layout_constraintStart_toEndOf="@+id/fridayTextView"
+        app:layout_constraintTop_toBottomOf="@+id/hourThursdayTextView" />
+
+    <TextView
+        android:id="@+id/hourSaturdayTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/empty_hour"
+        android:textColor="@color/itemRecyclerViewFirstColor"
+        android:textSize="12px"
+        app:layout_constraintStart_toEndOf="@+id/saturdayTextView"
+        app:layout_constraintTop_toBottomOf="@+id/hourFridayTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

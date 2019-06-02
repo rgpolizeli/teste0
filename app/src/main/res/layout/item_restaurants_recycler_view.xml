@@ -51,22 +51,24 @@
 
         <TextView
             android:id="@+id/restaurantNameTextView"
-            android:layout_width="179px"
-            android:layout_height="19px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16px"
             android:layout_marginTop="32px"
+            android:layout_marginBottom="49px"
             android:fontFamily="@font/montserrat"
             android:text="Nome do Restaurante"
             android:textAlignment="viewStart"
             android:textColor="@color/restaurantNameColor"
             android:textSize="16px"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/restaurantImageView"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/restaurantAddressTextView"
-            android:layout_width="149px"
-            android:layout_height="15px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16px"
             android:layout_marginTop="2px"
             android:fontFamily="@font/montserrat"
