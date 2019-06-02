@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class represents a sale. Each sale has an business hours, being able to be in different days and different periods of the day.
+ * This class represents a sale. Each sale contains the periods of its duration as hours.
  */
 public class Sale {
     private String description;

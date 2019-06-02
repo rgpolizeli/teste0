@@ -65,8 +65,16 @@ public class ItemsRVAdapter extends RecyclerView.Adapter<ItemsRVAdapter.ViewHold
 
         //currentItemPriceTextView
         String price = holder.itemView.getContext().getResources().getString(R.string.price_unit);
-        price = price + " " + this.items.get(position).getPrice();
+        if (this.items.get(position).getPrice() > 0) {
+            price = price + " " + this.items.get(position).getPrice();
+        } else {
+            price = price + " " + "-";
+        }
+
+
         holder.currentItemPriceTextView.setText(price);
+
+        holder.itemView.setTag(this.items.get(position).getGroup().toUpperCase());
     }
 
     @Override

@@ -13,13 +13,12 @@ import io.reactivex.observers.DisposableObserver;
 
 public class ItemsObserver extends DisposableObserver<Item[]> {
 
+    //Implemented by ItemsActivity and only dispatch items of a group to its respective recyclerViewAdapter.
     private I_DispatcherItemsToRespectiveAdapter dispatcherItemsToRespectiveAdapter;
-
 
     public ItemsObserver(I_DispatcherItemsToRespectiveAdapter dispatcherItemsToRespectiveAdapter) {
         this.dispatcherItemsToRespectiveAdapter = dispatcherItemsToRespectiveAdapter;
     }
-
 
     @Override
     public void onNext(Item[] items) {
@@ -31,6 +30,13 @@ public class ItemsObserver extends DisposableObserver<Item[]> {
         }
     }
 
+    /**
+     * Get all items of the menu and groups items by its groups.
+     * Attention: some items has their group's name in lowerCase.
+     *
+     * @param itemsList
+     * @return
+     */
     private Map<String, List<Item>> splitPerCategoty(List<Item> itemsList) {
 
         Map<String, List<Item>> itemsPerCategoryMap = new HashMap<>();

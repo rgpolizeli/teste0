@@ -11,6 +11,7 @@ import io.reactivex.observers.DisposableObserver;
 
 public class RestaurantsObserver extends DisposableObserver<Restaurant[]> {
 
+    //Implemented by restaurantsRVAdapter in MainActivity. Only call the update function of the adapter to load the restaurants in restaurantsRVAdapter.
     private I_RestaurantsRecyclerViewAdapter restaurantsRVAdapter;
 
     public RestaurantsObserver(I_RestaurantsRecyclerViewAdapter restaurantsRVAdapter) {

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class represents the opening hours of the restaurant on a certain weekday. The days of the week are represented from 1 to 7.
+ * This class represents the opening hours of the restaurant on week. The days of the week are represented from 1 to 7.
  */
 
 public class Hour {

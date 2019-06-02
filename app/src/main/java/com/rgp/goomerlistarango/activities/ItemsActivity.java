@@ -19,6 +19,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.google.gson.Gson;
 import com.rgp.goomerlistarango.R;
 import com.rgp.goomerlistarango.adapters.ItemsRVAdapter;
+import com.rgp.goomerlistarango.dialogs.ItemDialog;
 import com.rgp.goomerlistarango.interfaces.I_DispatcherItemsToRespectiveAdapter;
 import com.rgp.goomerlistarango.listeners.OnItemClickListener;
 import com.rgp.goomerlistarango.models.Hour;
@@ -36,15 +37,26 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
+/**
+ * This class implements an activity to show the menu' items.
+ * <p>
+ * Attention: Whereas the menu options are categorized by groups, for each group of the restaurant menu (max of 4) there is a recyclerView (stored in a map with the respective groupId, which is a integer) and an expandable header. When one group is expanded, the others are hidden. There is always a single expanded group.
+ *  
+ */
 public class ItemsActivity extends AppCompatActivity implements I_DispatcherItemsToRespectiveAdapter {
 
     //Gson to deserialize restaurant object from intent
     private final Gson gson = new Gson();
+
+    //Dialog to show clicked item of the menu.
+    private ItemDialog itemDialog;
+
     private Restaurant restaurant;
     private ItemsViewModel itemsViewModel;
 
     private int maxNumberOfItemsGroups = 4;
 
+    //one recyclerView to group.
     private Map<Integer, RecyclerView> recyclerViewsMap;
 
     private Observable<Item[]> itemsObservable;
@@ -59,6 +71,8 @@ public class ItemsActivity extends AppCompatActivity implements I_DispatcherItem
         getRestaurantDataFromIntent();
         setRestaurantData();
         setupItemsRecyclerView();
+        this.itemDialog = createItemDialog();
+
         //create observables
         itemsObservable = this.itemsViewModel.getItemsByRestaurantId(this.restaurant.getId());
 
@@ -81,6 +95,19 @@ public class ItemsActivity extends AppCompatActivity implements I_DispatcherItem
         super.onStop();
         //dispose observables
         this.itemsObserver.dispose();
+    }
+
+    /**
+     * Create itemDialog. Only one itemDialog is created and recycled to show different items.
+     *
+     * @return
+     */
+    private ItemDialog createItemDialog() {
+        ItemDialog itemDialog = new ItemDialog();
+        itemDialog.createDialogView(getLayoutInflater(), R.layout.item_dialog);
+        itemDialog.setupChildrenViewsOnClickListener();
+        itemDialog.createAlertDialog(this);
+        return itemDialog;
     }
 
     /**
@@ -150,6 +177,7 @@ public class ItemsActivity extends AppCompatActivity implements I_DispatcherItem
      * @param clickedItem
      */
     private void showItemDialog(Item clickedItem) {
+        this.itemDialog.show(clickedItem, this);
     }
 
     /**
@@ -179,9 +207,11 @@ public class ItemsActivity extends AppCompatActivity implements I_DispatcherItem
     }
 
     private int findGroupIdOfClickedView(View view) {
+        RecyclerView recyclerView;
         for (int groupId = 0; groupId < this.maxNumberOfItemsGroups; groupId++) {
             if (this.recyclerViewsMap.containsKey(groupId)) {
-                if (this.recyclerViewsMap.get(groupId).getChildAdapterPosition(view) != RecyclerView.NO_POSITION) {
+                recyclerView = this.recyclerViewsMap.get(groupId);
+                if (recyclerView.getChildAt(0) != null && recyclerView.getChildAt(0).getTag().equals(view.getTag())) {
                     return groupId;
                 }
             } else {
@@ -266,7 +296,7 @@ public class ItemsActivity extends AppCompatActivity implements I_DispatcherItem
     }
 
     /**
-     * Handle click in dinnerGroupHeaderConstraintLayout.
+     * Handle click in dinnerGroupHeaderConstraintLayout. Set in XML of the ItemsActivity.
      *
      * @param view the dinnerGroupHeaderConstraintLayout.
      */
@@ -284,7 +314,7 @@ public class ItemsActivity extends AppCompatActivity implements I_DispatcherItem
     }
 
     /**
-     * Handle click in drinkGroupHeaderConstraintLayout.
+     * Handle click in drinkGroupHeaderConstraintLayout. Set in XML of the ItemsActivity.
      *
      * @param view the drinkGroupHeaderConstraintLayout.
      */
@@ -293,16 +323,16 @@ public class ItemsActivity extends AppCompatActivity implements I_DispatcherItem
             RecyclerView recyclerView = this.recyclerViewsMap.get(1);
             ImageView expandableImageView;
             if (recyclerView.getVisibility() == View.GONE) {
+                hideAllOtherGroups(1);
                 recyclerView.setVisibility(View.VISIBLE);
                 expandableImageView = view.findViewById(R.id.drinkGroupExpandableImageView);
                 expandableImageView.setImageResource(R.drawable.ic_expanded);
-                hideAllOtherGroups(1);
             }
         }
     }
 
     /**
-     * Handle click in dessertGroupHeaderConstraintLayout.
+     * Handle click in dessertGroupHeaderConstraintLayout. Set in XML of the ItemsActivity.
      *
      * @param view the dessertGroupHeaderConstraintLayout.
      */
@@ -311,16 +341,16 @@ public class ItemsActivity extends AppCompatActivity implements I_DispatcherItem
             RecyclerView recyclerView = this.recyclerViewsMap.get(2);
             ImageView expandableImageView;
             if (recyclerView.getVisibility() == View.GONE) {
+                hideAllOtherGroups(2);
                 recyclerView.setVisibility(View.VISIBLE);
                 expandableImageView = view.findViewById(R.id.dessertGroupExpandableImageView);
                 expandableImageView.setImageResource(R.drawable.ic_expanded);
-                hideAllOtherGroups(2);
             }
         }
     }
 
     /**
-     * Handle click in accompanimentsGroupHeaderConstraintLayout.
+     * Handle click in accompanimentsGroupHeaderConstraintLayout. Set in XML of the ItemsActivity.
      *
      * @param view the accompanimentsGroupHeaderConstraintLayout.
      */
@@ -329,10 +359,10 @@ public class ItemsActivity extends AppCompatActivity implements I_DispatcherItem
             RecyclerView recyclerView = this.recyclerViewsMap.get(3);
             ImageView expandableImageView;
             if (recyclerView.getVisibility() == View.GONE) {
+                hideAllOtherGroups(3);
                 recyclerView.setVisibility(View.VISIBLE);
                 expandableImageView = view.findViewById(R.id.accompanimentsGroupExpandableImageView);
                 expandableImageView.setImageResource(R.drawable.ic_expanded);
-                hideAllOtherGroups(3);
             }
         }
     }
@@ -346,27 +376,26 @@ public class ItemsActivity extends AppCompatActivity implements I_DispatcherItem
         for (int id = 0; id < this.maxNumberOfItemsGroups; id++) {
             if (id != groupId) {
                 recyclerView = this.recyclerViewsMap.get(id);
-                recyclerView.setVisibility(View.GONE);
                 if (recyclerView.getVisibility() == View.VISIBLE) {
-                    switch (groupId) {
+                    switch (id) {
                         case 0:
-
                             expandableImageView = findViewById(R.id.dinnerGroupExpandableImageView);
-                            expandableImageView.setImageResource(R.drawable.ic_expanded);
+                            expandableImageView.setImageResource(R.drawable.ic_expandable);
                             break;
                         case 1:
                             expandableImageView = findViewById(R.id.drinkGroupExpandableImageView);
-                            expandableImageView.setImageResource(R.drawable.ic_expanded);
+                            expandableImageView.setImageResource(R.drawable.ic_expandable);
                             break;
                         case 2:
                             expandableImageView = findViewById(R.id.dessertGroupExpandableImageView);
-                            expandableImageView.setImageResource(R.drawable.ic_expanded);
+                            expandableImageView.setImageResource(R.drawable.ic_expandable);
                             break;
                         case 3:
                             expandableImageView = findViewById(R.id.accompanimentsGroupExpandableImageView);
-                            expandableImageView.setImageResource(R.drawable.ic_expanded);
+                            expandableImageView.setImageResource(R.drawable.ic_expandable);
                             break;
                     }
+                    recyclerView.setVisibility(View.GONE);
                 }
             }
         }
@@ -374,7 +403,7 @@ public class ItemsActivity extends AppCompatActivity implements I_DispatcherItem
 
     /**
      * Get the items grouped by menu group and dispatch to respective group's adapter.
-     *
+     * Invoked by itemsObserver, after it receives the menu's items.
      * @param itemsByGroup
      */
     @Override
@@ -399,6 +428,13 @@ public class ItemsActivity extends AppCompatActivity implements I_DispatcherItem
         String groupName = groupNameAllHighCase.toLowerCase();
         return groupName.substring(0, 1).toUpperCase() + groupName.substring(1);
     }
+
+    /**
+     * Show the utilized group's header and set it name in its textView.
+     * Attention: depending on the amount of food groups in the menu, some groups may not be used. All groups start with Visibility.GONE.
+     * @param groupId
+     * @param groupName
+     */
 
     private void setupGroupHeaderUI(int groupId, String groupName) {
         View view = null;

@@ -23,7 +23,7 @@
         android:layout_width="145px"
         android:layout_height="145px"
         android:layout_marginStart="75px"
-        android:layout_marginTop="51px"
+        android:layout_marginTop="30px"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         tools:srcCompat="@tools:sample/avatars" />
@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/restaurant_image_data_separator"
-        android:layout_marginTop="51px"
+        android:layout_marginTop="30px"
         android:fontFamily="@font/montserrat"
         android:text="Nome do Restaurante"
         android:textAlignment="viewStart"
@@ -60,13 +60,12 @@
         android:id="@+id/dinnerGroupHeaderConstraintLayout"
         android:layout_width="840px"
         android:layout_height="42px"
-        android:layout_marginStart="75px"
-        android:layout_marginTop="43px"
+        android:layout_marginTop="20px"
         android:background="@drawable/menu_group_drawable"
         android:onClick="dinnerGroupHeaderOnClick"
         android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/itemsSearchConstraintLayout">
+        app:layout_constraintStart_toStartOf="@+id/restaurantImageView"
+        app:layout_constraintTop_toBottomOf="@+id/restaurantImageView">
 
         <TextView
             android:id="@+id/dinnerTextView"
@@ -95,7 +94,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/dinnerRecyclerView"
         android:layout_width="840px"
-        android:layout_height="275px"
+        android:layout_height="180px"
         android:layout_marginStart="75px"
         android:layout_marginTop="10px"
         android:visibility="gone"
@@ -106,12 +105,11 @@
         android:id="@+id/drinkGroupHeaderConstraintLayout"
         android:layout_width="840px"
         android:layout_height="42px"
-        android:layout_marginStart="75px"
         android:layout_marginTop="10px"
         android:background="@drawable/menu_group_drawable"
         android:onClick="drinkGroupHeaderOnClick"
         android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/restaurantImageView"
         app:layout_constraintTop_toBottomOf="@+id/dinnerRecyclerView">
 
         <TextView
@@ -141,7 +139,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/drinkRecyclerView"
         android:layout_width="840px"
-        android:layout_height="275px"
+        android:layout_height="180px"
         android:layout_marginStart="75px"
         android:layout_marginTop="10px"
         android:visibility="gone"
@@ -152,12 +150,11 @@
         android:id="@+id/dessertGroupHeaderConstraintLayout"
         android:layout_width="840px"
         android:layout_height="42px"
-        android:layout_marginStart="75px"
         android:layout_marginTop="10px"
         android:background="@drawable/menu_group_drawable"
         android:onClick="dessertGroupHeaderOnClick"
         android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/restaurantImageView"
         app:layout_constraintTop_toBottomOf="@+id/drinkRecyclerView">
 
         <TextView
@@ -187,7 +184,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/dessertRecyclerView"
         android:layout_width="840px"
-        android:layout_height="275px"
+        android:layout_height="180px"
         android:layout_marginStart="75px"
         android:layout_marginTop="10px"
         android:visibility="gone"
@@ -198,12 +195,11 @@
         android:id="@+id/accompanimentsGroupHeaderConstraintLayout"
         android:layout_width="840px"
         android:layout_height="42px"
-        android:layout_marginStart="75px"
         android:layout_marginTop="10px"
         android:background="@drawable/menu_group_drawable"
         android:onClick="accompanimentsGroupHeaderOnClick"
         android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/restaurantImageView"
         app:layout_constraintTop_toBottomOf="@+id/dessertRecyclerView">
 
         <TextView
@@ -233,7 +229,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/accompanimentsRecyclerView"
         android:layout_width="840px"
-        android:layout_height="275px"
+        android:layout_height="180px"
         android:layout_marginStart="75px"
         android:layout_marginTop="10px"
         android:visibility="gone"
@@ -244,11 +240,11 @@
         android:id="@+id/imageView3"
         android:layout_width="260px"
         android:layout_height="484px"
-        android:layout_marginStart="30px"
+        android:layout_marginStart="945px"
         android:layout_marginTop="228px"
         android:layout_marginBottom="196px"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/itemsSearchConstraintLayout"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:srcCompat="@color/rectangleColor" />
 
@@ -428,30 +424,5 @@
         android:textSize="12px"
         app:layout_constraintStart_toEndOf="@+id/saturdayTextView"
         app:layout_constraintTop_toBottomOf="@+id/hourFridayTextView" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/itemsSearchConstraintLayout"
-        android:layout_width="840px"
-        android:layout_height="40px"
-        android:layout_marginStart="75px"
-        android:layout_marginTop="55px"
-        android:background="@drawable/search_drawable"
-        android:elevation="2dp"
-        android:textAlignment="viewStart"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/restaurantImageView">
-
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="16px"
-            android:layout_height="16px"
-            android:layout_marginTop="12px"
-            android:layout_marginEnd="25px"
-            android:layout_marginBottom="12px"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_search" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

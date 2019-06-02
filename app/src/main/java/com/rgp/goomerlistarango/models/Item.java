@@ -5,6 +5,9 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represent each option of a menu.
+ */
 public class Item {
     private int restaurantId;
     private String name;
